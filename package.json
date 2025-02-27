@@ -7,11 +7,28 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "simple-git-hooks && nuxt prepare"
   },
   "dependencies": {
     "nuxt": "^3.15.4",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@nuxt/eslint": "^1.1.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "lint-staged": "^15.4.3",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.7.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx commitlint -e $GIT_PARAMS"
+  },
+  "lint-staged": {
+    "*.{js,mjs,jsx,ts,tsx,vue}": "eslint --max-warnings 0"
   }
 }
