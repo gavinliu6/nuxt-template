@@ -1,3 +1,4 @@
+import eslintPluginReadableTailwind from 'eslint-plugin-readable-tailwind'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 import withNuxt from './.nuxt/eslint.config.mjs'
@@ -6,6 +7,7 @@ export default withNuxt(
   {
     plugins: {
       'simple-import-sort': simpleImportSort,
+      'readable-tailwind': eslintPluginReadableTailwind,
     },
     rules: {
       '@stylistic/arrow-parens': ['error', 'as-needed'],
@@ -21,6 +23,7 @@ export default withNuxt(
       }],
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+      ...eslintPluginReadableTailwind.configs.warning.rules,
     },
   }
 )
